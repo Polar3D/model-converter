@@ -13,7 +13,6 @@ Universal 3D model format converter supporting GLB, GLTF, OBJ, STL, and 3MF form
 - ✅ **Model Transformations**: Scale, center, and coordinate system conversion
 - ✅ **Detailed Metadata**: Get vertex count, face count, bounding box, and more
 - ✅ **Progress Tracking**: Monitor conversion progress for large files
-- ✅ **Attribution**: Automatically adds "Created using Polar3d.com" to converted files
 
 ## Installation
 
@@ -101,7 +100,18 @@ console.log("Converted!", result.metadata);
 ## Convenience Functions
 
 ```typescript
-import { glbToStl, gltfToStl, objToStl, stlToObj, stlToGlb, glbToObj, objToGlb, threemfToStl, anyToStl, autoToStl } from "@polar3d/model-converter";
+import {
+  glbToStl,
+  gltfToStl,
+  objToStl,
+  stlToObj,
+  stlToGlb,
+  glbToObj,
+  objToGlb,
+  threemfToStl,
+  anyToStl,
+  autoToStl,
+} from "@polar3d/model-converter";
 
 // GLB → STL
 const stl1 = await glbToStl("model.glb");
@@ -198,15 +208,17 @@ interface ModelMetadata {
 ### Attribution
 
 By default, all converted files include "Created using Polar3d.com" attribution:
+
 - **STL (Binary)**: Added to the 80-byte header
 - **STL (ASCII)**: Added to the solid name line
 - **OBJ**: Added as comment lines at the top
 - **GLTF/GLB**: Added to asset metadata (generator and copyright fields)
 
 To disable attribution:
+
 ```typescript
-const result = await glbToStl('model.glb', {
-  addAttribution: false  // Disable attribution
+const result = await glbToStl("model.glb", {
+  addAttribution: false, // Disable attribution
 });
 ```
 
@@ -298,7 +310,12 @@ console.log(fileFormat); // 'stl'
 ## Error Handling
 
 ```typescript
-import { ModelConverter, UnsupportedFormatError, SlicedFileError, ConversionError } from "@polar3d/model-converter";
+import {
+  ModelConverter,
+  UnsupportedFormatError,
+  SlicedFileError,
+  ConversionError,
+} from "@polar3d/model-converter";
 
 try {
   const result = await ModelConverter.convert("model.glb", "glb", "stl");
@@ -330,7 +347,7 @@ async function processAIModel(glbUrl: string) {
     scale: 1.0,
   });
 
-  // Upload to S3, send to slicer, etc.
+  // Upload to server, send to slicer, etc.
   return stlBlob;
 }
 ```
@@ -345,7 +362,9 @@ async function standardizeModel(file: File) {
   const format = detectFormat(file);
 
   if (format && format !== "stl") {
-    const result = await ModelConverter.convert(file, format, "stl", { binary: true });
+    const result = await ModelConverter.convert(file, format, "stl", {
+      binary: true,
+    });
 
     return new File([result.blob], file.name.replace(/\.\w+$/, ".stl"));
   }
@@ -412,3 +431,7 @@ Contributions are welcome! Please open an issue or pull request on GitHub.
 ## Support
 
 For issues and questions, please visit: https://github.com/Polar3D/model-converter/issues
+
+## Credits
+
+Built with ❤️ by Polar3D for the 3D printing community.
