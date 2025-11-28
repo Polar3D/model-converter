@@ -434,4 +434,4 @@ For issues and questions, please visit: https://github.com/Polar3D/model-convert
 
 ## Credits
 
-Built with ❤️ by Polar3D for the 3D printing community.
+Built with ❤️ by [Polar3D](https://polar3d.com) for the 3D printing community.

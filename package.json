@@ -35,7 +35,8 @@
     "3mf",
     "three.js",
     "3d-printing",
-    "model-conversion"
+    "model-conversion",
+    "polar3d"
   ],
   "author": "Polar3D",
   "license": "MIT",
