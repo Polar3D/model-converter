@@ -1,6 +1,6 @@
 {
   "name": "@polar3d/model-converter",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Universal 3D model format converter supporting GLB, GLTF, OBJ, STL, and 3MF formats",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
